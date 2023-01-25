@@ -132,7 +132,7 @@ function overrideAppLaunchArgs(appsConfig, cliConfig) {
 function validateAppConfig({ appConfig, appPath, deviceConfig, errorComposer, configurationName }) {
   const deviceType = deviceConfig.type;
   const allowedAppTypes = deviceAppTypes[deviceType];
-  const supportedCloudAppsConfig = ['type', 'app_url', 'app_client_url'];
+  const supportedCloudAppsConfig = ['type', 'app', 'appClient'];
 
   if (allowedAppTypes && !allowedAppTypes.includes(appConfig.type)) {
     throw errorComposer.invalidAppType({
@@ -156,11 +156,11 @@ function validateAppConfig({ appConfig, appPath, deviceConfig, errorComposer, co
     }
   }
   else {
-    if (!_.isString(appConfig.app_url)) {
+    if (!_.isString(appConfig.app)) {
       throw errorComposer.invalidCloudAppUrl(appPath);
     }
 
-    if (!_.isString(appConfig.app_client_url)) {
+    if (!_.isString(appConfig.appClient)) {
       throw errorComposer.invalidCloudAppClientUrl(appPath);
     }
   }

@@ -554,16 +554,16 @@ You have a few options:
 
   invalidCloudAppUrl( appPath ) {
     return new DetoxConfigError({
-      message: `Invalid app "app_url" property in the app config.\nExpected a string:.`,
-      debugInfo: this._focusOnAppConfig(appPath, this._ensureProperty('app_url')),
+      message: `Invalid "app" property in the app config.\nExpected a string:.`,
+      debugInfo: this._focusOnAppConfig(appPath, this._ensureProperty('app')),
       inspectOptions: { depth: 4 },
     });
   }
 
   invalidCloudAppClientUrl( appPath ) {
     return new DetoxConfigError({
-      message: `Invalid app "app_client_url" property in the app config.\nExpected a string:.`,
-      debugInfo: this._focusOnAppConfig(appPath, this._ensureProperty('app_client_url')),
+      message: `Invalid "appClient" property in the app config.\nExpected a string:.`,
+      debugInfo: this._focusOnAppConfig(appPath, this._ensureProperty('appClient')),
       inspectOptions: { depth: 4 },
     });
   }

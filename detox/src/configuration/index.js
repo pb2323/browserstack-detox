@@ -116,12 +116,20 @@ async function composeDetoxConfig({
 
   if (configurationName === 'android.cloud.release') {
     const query_param = {
-      'apps': appsConfig,
-      'device': deviceConfig,
-      'artifacts': artifactsConfig,
-      'session': sessionConfig,
-      'cloudAuthentication': cloudAuthenticationConfig,
-      'client.detoxVersion': package_json.version
+      'device': _.get(deviceConfig, 'device.name'),
+      'os': _.get(deviceConfig, 'device.os'),
+      'osVersion': _.get(deviceConfig, 'device.osVersion'),
+      'name': _.get(sessionConfig, 'name'),
+      'project': _.get(sessionConfig, 'project'),
+      'build': _.get(sessionConfig, 'build'),
+      'clientDetoxVersion': package_json.version,
+      'app': _.get(appsConfig, 'default.app'),
+      'appClient': _.get(appsConfig, 'default.appClient'),
+      'username': _.get(cloudAuthenticationConfig, 'username'),
+      'accessKey': _.get(cloudAuthenticationConfig, 'accessKey'),
+      'networkLogs': _.get(artifactsConfig, 'plugins.networkLogs.enabled'),
+      'deviceLogs': _.get(artifactsConfig, 'plugins.deviceLogs.enabled'),
+      'video': _.get(artifactsConfig, 'plugins.video.enabled')
     };
     sessionConfig.server += `?caps=${JSON.stringify(query_param)}`;
   }

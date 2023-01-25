@@ -91,18 +91,22 @@ function ifString(value, mapper) {
 
 function validateCloudConfig(artifactsConfig) {
   var plugins = artifactsConfig && artifactsConfig.plugins;
-  const cloudSupportedLogs = ['video', 'cloudDeviceLogs', 'cloudNetworkLogs'];
+  const cloudSupportedLogs = ['video', 'deviceLogs', 'networkLogs'];
   const cloudSupportedCaps = ['plugins'];
   plugins = cloudSupportedLogs.reduce((accumulator, plugin) => {
+    const defaultEnabled = plugin == 'video' ? true : false;
+    if (typeof accumulator[plugin] === 'object' && Object.keys(accumulator[plugin]).length > 1) {
+      logger.warn(`[ArtifactsConfig] Only the all and none presets are honoured in the ${plugin} plugin for device type 'android.cloud' and default is enabled:${defaultEnabled}.`);
+    }
     const enabled = _.get(accumulator, `${plugin}.enabled`);
-    if (accumulator[plugin]) {
+    if (accumulator[plugin] && enabled) {
         accumulator[plugin] = {
             'enabled': enabled
         };
     }
     else {
         accumulator[plugin] = {
-            'enabled': plugin === 'video' ? true : false
+            'enabled': defaultEnabled
         };
     }
     return accumulator;
@@ -111,6 +115,7 @@ function validateCloudConfig(artifactsConfig) {
   ignoredCloudConfigParams = ignoredCloudConfigParams.concat(_.difference(Object.keys(plugins), cloudSupportedLogs));
   if (ignoredCloudConfigParams.length > 0)
     logger.warn(`[ArtifactsConfig] The properties ${ignoredCloudConfigParams} are not honoured for device type 'android.cloud'.`);
+  // Should I delete the ignored properties also?
 }
 
 module.exports = composeArtifactsConfig;

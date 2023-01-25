@@ -251,7 +251,7 @@ const EXPECTED_DEVICE_MATCHER_PROPS = {
   'android.attached': ['adbName'],
   'android.emulator': ['avdName'],
   'android.genycloud': ['recipeUUID', 'recipeName'],
-  'android.cloud': ['name', 'os', 'os_version']
+  'android.cloud': ['name', 'os', 'osVersion']
 };
 // Add here
 

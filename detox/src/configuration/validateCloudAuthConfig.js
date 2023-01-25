@@ -21,11 +21,11 @@ async function validateCloudAuthConfig(options) {
         throw errorComposer.invalidCloudAuthProperty('username');
     }
 
-    if (!_.isString(cloudAuthentication.access_key)) {
-        throw errorComposer.invalidCloudAuthProperty('access_key');
+    if (!_.isString(cloudAuthentication.accessKey)) {
+        throw errorComposer.invalidCloudAuthProperty('accessKey');
     }
 
-    const cloudSupportedCaps = ['username', 'access_key'];
+    const cloudSupportedCaps = ['username', 'accessKey'];
     const ignoredCloudConfigParams = _.difference(Object.keys(cloudAuthentication), cloudSupportedCaps);
     if (ignoredCloudConfigParams.length > 0)
         log.warn(`[CloudAuthenticationConfig] The properties ${ignoredCloudConfigParams.join(', ')} are not honoured for device type 'android.cloud'.`);

@@ -2,9 +2,9 @@ const _ = require('lodash');
 var object = {
     'name': 'ABC',
     'os': 'ios',
-    'os_version': '12'
+    'osVersion': '12'
 };
-const arr = ['name', 'os', 'os_version'];
+const arr = ['name', 'os', 'osVersion'];
 console.log(_.pick(object, arr));
 
 // console.log(Object.keys(object).every(ele => arr.includes(ele)));

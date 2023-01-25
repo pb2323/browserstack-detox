@@ -158,7 +158,7 @@ declare global {
 
         interface DetoxCloudAuthConfig {
             username?: string;
-            access_key?: string;
+            accessKey?: string;
         }
 
         interface DetoxTestRunnerConfig {
