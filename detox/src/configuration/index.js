@@ -131,7 +131,7 @@ async function composeDetoxConfig({
       'deviceLogs': _.get(artifactsConfig, 'plugins.deviceLogs.enabled'),
       'video': _.get(artifactsConfig, 'plugins.video.enabled')
     };
-    sessionConfig.server += `?caps=${JSON.stringify(query_param)}`;
+    sessionConfig.server += `?caps=${encodeURIComponent(JSON.stringify(query_param))}`;
   }
   const result = {
     configurationName,
