@@ -46,7 +46,6 @@ class AndroidAttached extends RuntimeDriverFactoryAndroid {
     const props = {
       adbName: deviceCookie.adbName,
     };
-
     const { AttachedAndroidRuntimeDriver } = require('../drivers');
     return new AttachedAndroidRuntimeDriver(deps, props);
   }
@@ -68,7 +67,6 @@ class Noop extends RuntimeDriverFactoryAndroid {
     const props = {
       adbName: deviceCookie.adbName,
     };
-
     const AndroidDriver  = require('../drivers/android/AndroidDriver');
     return new AndroidDriver(deps, props);
   }

@@ -5,6 +5,7 @@ class RuntimeDeviceFactory {
   createRuntimeDevice(deviceCookie, commonDeps, configs) {
     const deps = this._createDriverDependencies(commonDeps);
     const runtimeDriver = this._createDriver(deviceCookie, deps, configs);
+    console.log(this, runtimeDriver);
     return new RuntimeDevice({ ...commonDeps, ...configs }, runtimeDriver);
   }
 

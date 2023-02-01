@@ -96,11 +96,10 @@ class DetoxWorker {
     this._behaviorConfig = behaviorConfig;
     this._deviceConfig = deviceConfig;
     this._sessionConfig = sessionConfig;
-    console.log(this._appsConfig, 'heree');
     // @ts-ignore
     this._sessionConfig.sessionId = sessionConfig.sessionId || uuid.UUID();
     this._runtimeErrorComposer.appsConfig = this._appsConfig;
-
+    console.log("Inside here 1");
     this._client = new Client(sessionConfig);
     this._client.terminateApp = async () => {
       // @ts-ignore

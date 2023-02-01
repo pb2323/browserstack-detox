@@ -35,7 +35,7 @@ function composeRunnerConfig(opts) {
       bail: false,
       jest: {
         setupTimeout: 300000,
-        teardownTimeout: 30000,
+        teardownTimeout: 240000,
         retryAfterCircusRetries: false,
         reportSpecs: undefined,
         reportWorkerAssign: true,
