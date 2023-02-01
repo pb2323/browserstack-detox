@@ -1,4 +1,5 @@
 function create() {
+  console.log('TESTING DETOX');
   if (process.env.DETOX_CONFIG_SNAPSHOT_PATH) {
     return require('./src/realms/secondary');
   } else {
